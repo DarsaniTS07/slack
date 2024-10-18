@@ -27,7 +27,7 @@ const Sidebar = () => {
     {icon:<img src={Messenger} style={{width:'25px', height:'25px'}}/>}
   ]
   return (
-    <Box sx={{backgroundColor:'#333333', height: '90.5vh'}} flex={1} flexDirection="column"  display='flex' alignItems="center" paddingTop="17px" >
+    <Box sx={{backgroundColor:'#333333', height: '90.2vh'}} flex={1} flexDirection="column"  display='flex' alignItems="center" paddingTop="17px" >
 
       <IconButton>
         <KeyboardArrowRightIcon sx={{color:"#FFFFFF", border:"1px solid #5078E1", borderRadius:"50%", backgroundColor:"#5078E1", fontSize:"25px"}}/>

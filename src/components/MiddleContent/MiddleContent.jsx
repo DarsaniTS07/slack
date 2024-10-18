@@ -1,44 +1,41 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Popover,
-  Typography,
-} from "@mui/material";
+import { Box,Button,Card,CardActions,CardContent,CardMedia,
+  Dialog,Popover,Typography,} from "@mui/material";
 import React, { useState } from "react";
 import place from "../../assets/Home.jpeg";
 import LocalHotelOutlinedIcon from "@mui/icons-material/LocalHotelOutlined";
 import { LuBath } from "react-icons/lu";
 import { IoMdHome } from "react-icons/io";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import CustomModal from "../Model/Model.jsx";
+import Pricing from "../Pricing/Pricing.jsx";
+import Amenities from "../Amenities/Amenities.jsx";
+import Discount from "../Discount/Discount.jsx";
+import RemoveComponent from "../RemoveComponent/RemoveComponent.jsx";
+import AddUtilities from "../Utilities/Utilities.jsx";
 
 const MiddleContent = () => {
 
     const [anchorEl, setAnchorEl] = useState(null);
-    const [openModal, setOpenModal] = useState("");
+    const [openComponent, setOpenComponent] = useState("");
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
   
-    const handleClose = () => {
+    const handleClosePopover = () => {
       setAnchorEl(null);
     };
   
-    const open = Boolean(anchorEl);
-    const id = open ? "simple-popover" : undefined;
 
-    const handleOpenModal = (modalType) => {
-      setOpenModal(modalType);
+    const handleOpenComponent = (componentType) => {
+      setOpenComponent(componentType);
     };
   
-    const handleCloseModal = () => {
-      setOpenModal("");
+    const handleCloseComponent= () => {
+      setOpenComponent("");
     };
+
+    const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   const Content_details = [
     {
@@ -88,21 +85,21 @@ const MiddleContent = () => {
         <Card
           key={item.id}
           sx={{
-            maxWidth: "223px",
+            maxWidth: "205px",
             width: "100%",
             gap: "20px",
-            margin: "10px",
-            padding:"10px"
+            margin: "15px",
+            padding:"14px"
           }}
         >
           <CardMedia component="img" alt="Home" height="115" image={place}  />
           <CardContent sx={{padding:'0'}}>
-            <Box display="flex" flexDirection="row" sx={{mt:2}} >
+            <Box display="flex" flexDirection="row" sx={{mt:1}} >
               <Typography
                 
                 variant="p"
                 component="div"
-                sx={{ fontSize: "19px" }}
+                sx={{ fontSize: "16px" , fontWeight:"600"}}
               >
                 {item.name}
               </Typography>
@@ -118,8 +115,8 @@ const MiddleContent = () => {
                 sx={{
                   color: "#98A0AC",
                   fontSize: "20px",
-                  marginLeft: "14px",
-                  marginRight: "10px", 
+                  marginLeft: "10px",
+                  marginRight: "1px", 
                 
                 }}
               >
@@ -129,7 +126,7 @@ const MiddleContent = () => {
                 {item.feet} Sq.Ft
               </Typography>
             </Box>
-            <Box display="flex" flexDirection="row"  alignItems="center" justifyContent="space-between" alignContent="center" justifyItems="center">
+            <Box display="flex" flexDirection="row"  alignItems="center" justifyContent="space-between" >
               <Box display="flex" flexDirection="row" gap={1}>
               <LocalHotelOutlinedIcon
                 sx={{ color: "#98A0AC", fontSize: "19px"  }}
@@ -140,10 +137,9 @@ const MiddleContent = () => {
               <Typography
                 sx={{
                   color: "#98A0AC",
-                  fontSize: "20px",
+                  fontSize: "18px",
                   marginLeft: "15px",
-                  marginRight: "10px", 
-                  
+                  marginRight: "10px"
                 }}
               >
                 •
@@ -186,43 +182,54 @@ const MiddleContent = () => {
       </Button>
     </Box>
   </CardActions>
+  
   <Popover
     id={id}
     open={open}
     anchorEl={anchorEl}
-    onClose={handleClose}
+    onClose={handleClosePopover}
     anchorOrigin={{
       vertical: "center",
       horizontal: "right",
     }}
   >
-    <Typography onClick={() => handleOpenModal("Add Pricing Component")}
+    <Typography onClick={() =>handleOpenComponent("Pricing")}
     sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
       Add Pricing Component
     </Typography>
-    <Typography onClick={() => handleOpenModal("Add Amenities")}
+    <Typography onClick={() => handleOpenComponent("Amenities")}
     sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
       Add Amenities
     </Typography>
-    <Typography onClick={() => handleOpenModal("Add Utilities")}
+    <Typography onClick={() => handleOpenComponent("Utilities")}
     sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
       Add Utilities
     </Typography>
-    <Typography onClick={() => handleOpenModal("Add Discount")}
+    <Typography onClick={() => handleOpenComponent("Discount")}
     sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
       Add Discount
     </Typography>
-    <Typography onClick={() => handleOpenModal("Remove Component")}
+    <Typography onClick={() => handleOpenComponent("Remove")}
      sx={{ p: 1, fontSize: "13px", m: 1 }}>Remove Component</Typography>
   </Popover>
-        <CustomModal
-            open={Boolean(openModal)}
-            onClose={handleCloseModal}
-            title={openModal}
-          />
+  <Dialog open={Boolean(openComponent)} onClose={handleCloseComponent}
+  slotProps={{
+    backdrop: {
+      style: {
+        backgroundColor: 'rgba(0, 0, 0, 0.2)', 
+      },
+    },
+  }}>
+            {openComponent === "Pricing" && <Pricing />}
+            {openComponent === "Amenities" && <Amenities/>}
+            {openComponent === "Utilities" && <AddUtilities />}
+            {openComponent === "Discount" && <Discount />}
+            {openComponent === "Remove" && <RemoveComponent />}
+          </Dialog>
         </Card>
       ))}
     </Box>
+   
   );
 };
 
