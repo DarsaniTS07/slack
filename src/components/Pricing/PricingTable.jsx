@@ -17,17 +17,16 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
   height: 5,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.grey[200],
+    backgroundColor: "#E4E8EE",
     ...theme.applyStyles('dark', {
-      backgroundColor: theme.palette.grey[800],
-      
+      backgroundColor: "#E4E8EE",
     }),
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
     backgroundColor: color || '#1a90ff',
     ...theme.applyStyles('dark', {
-      backgroundColor: color || '#308fe8',
+      backgroundColor: color || '#E4E8EE',
     }),
   },
 }));

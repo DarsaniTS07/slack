@@ -25,7 +25,7 @@ const Header = () => {
           onChange={handleChange}
           displayEmpty
           IconComponent={ExpandMoreIcon}
-          sx={{ height: "25px", fontSize: "12px",paddingRight: "30px" , backgroundColor:"#F5F7FA", marginRight:"25px" }}
+          sx={{ height: "25px", fontSize: "12px",paddingRight: "30px" , backgroundColor:"#F5F7FA", marginRight:"25px", fontWeight:700}}
         >
             <MenuItem value="" disabled sx={{fontSize:"13px"}}>
               Select a Category

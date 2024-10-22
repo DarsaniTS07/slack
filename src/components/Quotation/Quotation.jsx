@@ -30,7 +30,7 @@ const Quotation = () => {
               <TableRow>
                 <TableCell component="th" scope="row" sx={{padding:'10px 18px', color:"#4E5A6B"}}>Total Amount</TableCell>
                 <TableCell align="left" sx={{ padding: "10px 18px", color:"#4E5A6B" }}>3</TableCell>
-                <TableCell align="right" sx={{ padding: "10px 18px" , color:"#4E5A6B", fontWeight:"600"}}>$ 3700.00</TableCell>
+                <TableCell align="right" sx={{ padding: "10px 18px" , color:"#091B29", fontWeight:700}}>$ 3700.00</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell component="th" scope="row" sx={{padding:'10px 18px', color:"#4E5A6B"}}>Total Discount</TableCell>
@@ -40,18 +40,18 @@ const Quotation = () => {
               <TableRow>
                 <TableCell component="th" scope="row" sx={{padding:'10px 18px', color:"#4E5A6B"}}>Total Refundable</TableCell>
                 <TableCell align="left" sx={{ padding: "10px 18px", color:"#4E5A6B" }}>0%</TableCell>
-                <TableCell align="right" sx={{ padding: "10px 18px" , color:"#4E5A6B", fontWeight:"600"}}>$ 0</TableCell>
+                <TableCell align="right" sx={{ padding: "10px 18px" , color:"#091B29", fontWeight:700}}>$ 0</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell component="th" scope="row" sx={{padding:'10px 18px', color:"#4E5A6B"}}>Total Tax</TableCell>
                 <TableCell align="left" sx={{ padding: "10px 18px", color:"#4E5A6B" }}>18%</TableCell>
-                <TableCell align="right" sx={{ padding: "10px 18px", color:"#4E5A6B", fontWeight:"600" }}>$ 648.00</TableCell>
+                <TableCell align="right" sx={{ padding: "10px 18px", color:"#091B29", fontWeight:700 }}>$ 648.00</TableCell>
               </TableRow>
               <Box sx={{height:"11rem"}}></Box>
               <TableRow sx={{borderTop:"1px solid #98A0AC"}}>
                 <TableCell component="th" scope="row" sx={{padding:'10px 18px', color:"#4E5A6B", fontWeight:"600", fontSize:"15px"}}>Quote Amount</TableCell>
                 <TableCell align="right" sx={{ padding: "10px 18px", color:"#4E5A6B" }}></TableCell>
-                <TableCell align="right" sx={{ padding: "10px 18px", color:"#4E5A6B", fontWeight:"600" }}>$ 4148.00</TableCell>
+                <TableCell align="right" sx={{ padding: "10px 18px", color:"#091B29", fontWeight:700}}>$ 4148.00</TableCell>
               </TableRow>
             </TableBody>
           </Table>

@@ -31,10 +31,10 @@ const Container = () => {
         </Grid2>
       </Grid2>
       <Box display="flex" flexDirection="row">
-        <Button variant="outlined" sx={{textTransform:"none" , color:"#091B29", fontWeight:"600", borderColor:"#E4E8EE", padding:"0px 12px !important",  ml:"3rem",mt:"7px", borderRadius:"7px",height:'2.2rem'}} > Previous</Button>
+        <Button variant="outlined" sx={{textTransform:"none" , color:"#091B29", fontWeight:"600", borderColor:"#E4E8EE", padding:"0px 12px !important",  ml:"1.3rem",mt:"7px", borderRadius:"7px",height:'2.2rem'}} > Previous</Button>
         <Box marginLeft="auto">
         <Button variant="outlined" sx={{textTransform:"none" , color:"#091B29", fontWeight:"600", borderColor:"#E4E8EE", padding:"5px 12px", ml:"2rem",mt:'7px', borderRadius:"7px"}} > Cancel</Button>
-        <Button variant="contained" sx={{textTransform:"none" , color:"#FFFFFF", fontWeight:"600", borderColor:"#E4E8EE", padding:"5px 12px", ml:"2rem", mt:'7px',mr:'2rem',borderRadius:"7px"}} > Create Quotation</Button>
+        <Button variant="contained" sx={{textTransform:"none" , color:"#FFFFFF", fontWeight:"600", borderColor:"#E4E8EE", padding:"5px 12px", ml:"2rem", mt:'7px',mr:'1.4rem',borderRadius:"7px"}} > Create Quotation</Button>
         </Box>
       </Box>
     </Box>

@@ -32,7 +32,7 @@ const Lead_Details = () => {
 
   return (
     <Box>
-        <Typography sx={{padding:"13px", paddingBottom:"0px",color:"#4E5A6B",fontWeight:"600"}}>Lead Details</Typography>
+        <Typography sx={{padding:"13px", paddingBottom:"0px",color:"#4E5A6B",fontWeight:"600", marginLeft:"0.1rem"}}>Lead Details</Typography>
         <Box sx={{height:"4.2rem", border:"1px solid #E4E8EE",margin:"7px", display:"flex", flexDirection:"row", borderRadius:"5px"}}>
             <Avatar variant='square' src='/src/assets/Profile.jpeg' sx={{margin:"10px 15px",height:"45px", borderRadius:"3px"}}></Avatar>
             <Box display="flex" flexDirection="column">
