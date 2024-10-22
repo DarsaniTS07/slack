@@ -1,16 +1,16 @@
 import { Box,Button,Card,CardActions,CardContent,CardMedia,
-  Dialog,Popover,Typography,} from "@mui/material";
+  ClickAwayListener,
+Divider,IconButton,List,ListItem,Paper,Popper,Typography,} from "@mui/material";
 import React, { useState } from "react";
 import place from "../../assets/Home.jpeg";
 import LocalHotelOutlinedIcon from "@mui/icons-material/LocalHotelOutlined";
 import { LuBath } from "react-icons/lu";
 import { IoMdHome } from "react-icons/io";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import Pricing from "../Pricing/Pricing.jsx";
-import Amenities from "../Amenities/Amenities.jsx";
-import Discount from "../Discount/Discount.jsx";
-import RemoveComponent from "../RemoveComponent/RemoveComponent.jsx";
-import AddUtilities from "../Utilities/Utilities.jsx";
+import { RiDeleteBinLine } from "react-icons/ri";
+import Pricing from "../Pricing/Pricing";
+import Amentities from "../Amentities/Amentities";
+
 
 const MiddleContent = () => {
 
@@ -28,6 +28,7 @@ const MiddleContent = () => {
 
     const handleOpenComponent = (componentType) => {
       setOpenComponent(componentType);
+      handleClosePopover();
     };
   
     const handleCloseComponent= () => {
@@ -80,6 +81,7 @@ const MiddleContent = () => {
     },
   ];
   return (
+
     <Box display="flex" flexWrap="wrap">
       {Content_details.map((item) => (
         <Card
@@ -87,23 +89,28 @@ const MiddleContent = () => {
           sx={{
             maxWidth: "205px",
             width: "100%",
-            gap: "20px",
+            gap: "20px",    
             margin: "15px",
             padding:"14px"
           }}
         >
-          <CardMedia component="img" alt="Home" height="115" image={place}  />
+          <Box sx={{position:"relative"}}>
+          <CardMedia component="img" alt="Home" height="115"
+          image={place} sx={{borderRadius:"5px", position:"relative"}} />
+          <IconButton sx={{position:"absolute", top:3, right:3,cursor:"pointer"}}>
+          <RiDeleteBinLine style={{color:"#FF4B4B",fontSize:"17px",
+            border:"1px solid #FFFFFF", borderRadius:"50%", padding:"4px", backgroundColor:"#FFFFFF"
+          }}/>
+          </IconButton>
+          </Box>
           <CardContent sx={{padding:'0'}}>
             <Box display="flex" flexDirection="row" sx={{mt:1}} >
               <Typography
-                
-                variant="p"
-                component="div"
-                sx={{ fontSize: "16px" , fontWeight:"600"}}
+                sx={{ fontSize: "16px" , fontWeight:"700"}}
               >
                 {item.name}
               </Typography>
-              <Typography sx={{ fontSize: "15px", marginLeft: "auto" }}>
+              <Typography sx={{ fontSize: "15px", marginLeft: "auto" ,fontWeight:700}}>
                 $ {item.amount}
               </Typography>
             </Box>
@@ -115,12 +122,12 @@ const MiddleContent = () => {
                 sx={{
                   color: "#98A0AC",
                   fontSize: "20px",
-                  marginLeft: "10px",
+                  marginLeft: "5px",
                   marginRight: "1px", 
                 
                 }}
               >
-                •
+                {"\u2022"}
               </Typography>
               <Typography sx={{ color: "#98A0AC", fontSize: "13px" , marginLeft:"auto"}}>
                 {item.feet} Sq.Ft
@@ -142,10 +149,10 @@ const MiddleContent = () => {
                   marginRight: "10px"
                 }}
               >
-                •
+                {"\u2022"}
               </Typography>
               </Box>
-              <Box display="flex" flexDirection="row" gap={1}>
+              <Box display="flex" flexDirection="row" gap={1} justifyContent="center" alignItems="center">
               <LuBath style={{ color: "#98A0AC", fontSize: "17px" }} />
               <Typography sx={{ color: "#98A0AC", fontSize: "15px" }}>
                 {item.bath}
@@ -159,10 +166,10 @@ const MiddleContent = () => {
                 
                 }}
               >
-                •
+                {"\u2022"}
               </Typography>
               </Box>
-              <Box display="flex" flexDirection="row" gap={1}>
+              <Box display="flex" flexDirection="row" gap={1} justifyContent="center" alignItems="center">
               <IoMdHome style={{ color: "#98A0AC", fontSize: "18px" }} />
               <Typography sx={{ color: "#98A0AC", fontSize: "17px" }}>
                 {item.home}
@@ -180,52 +187,33 @@ const MiddleContent = () => {
       >
         <AddRoundedIcon sx={{fontWeight:"500", fontSize:"20px"}}/> Customize
       </Button>
+      <Popper
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        placement="right" 
+      >
+        <ClickAwayListener onClickAway={handleClosePopover}>
+        <Paper>
+          <List sx={{padding:0, margin:0, fontFamily:'Nunito Sans',fontSize:"13px",cursor:"pointer"}}>
+            <ListItem onClick={() => handleOpenComponent("Pricing")}>Add Pricing Component</ListItem>
+            <Divider sx={{marginInline:"6px"}}/>
+            <ListItem onClick={() => handleOpenComponent("Amenities")}>Add Amenities</ListItem>
+            <Divider sx={{marginInline:"6px"}}/>
+            <ListItem onClick={() => handleOpenComponent("Utilities")}>Add Utilities</ListItem>
+            <Divider sx={{marginInline:"6px"}}/>
+            <ListItem onClick={() => handleOpenComponent("Discount")}>Add Discount</ListItem>
+            <Divider sx={{marginInline:"6px"}}/>
+            <ListItem onClick={() => handleOpenComponent("Remove")}>Remove Component</ListItem>
+          </List>
+        </Paper>
+        </ClickAwayListener>
+      </Popper>
+      {openComponent === "Pricing" && (<Pricing  open={openComponent === "Pricing"} onClose={handleCloseComponent}/>)}
+      {openComponent === "Amenities" && (<Amentities open={openComponent === "Amenities"} onClose={handleCloseComponent}/>)}
+
     </Box>
   </CardActions>
-  
-  <Popover
-    id={id}
-    open={open}
-    anchorEl={anchorEl}
-    onClose={handleClosePopover}
-    anchorOrigin={{
-      vertical: "center",
-      horizontal: "right",
-    }}
-  >
-    <Typography onClick={() =>handleOpenComponent("Pricing")}
-    sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
-      Add Pricing Component
-    </Typography>
-    <Typography onClick={() => handleOpenComponent("Amenities")}
-    sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
-      Add Amenities
-    </Typography>
-    <Typography onClick={() => handleOpenComponent("Utilities")}
-    sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
-      Add Utilities
-    </Typography>
-    <Typography onClick={() => handleOpenComponent("Discount")}
-    sx={{ p: 1, fontSize: "13px", borderBottom: "1px solid #98A0AC", m: 1 }}>
-      Add Discount
-    </Typography>
-    <Typography onClick={() => handleOpenComponent("Remove")}
-     sx={{ p: 1, fontSize: "13px", m: 1 }}>Remove Component</Typography>
-  </Popover>
-  <Dialog open={Boolean(openComponent)} onClose={handleCloseComponent}
-  slotProps={{
-    backdrop: {
-      style: {
-        backgroundColor: 'rgba(0, 0, 0, 0.2)', 
-      },
-    },
-  }}>
-            {openComponent === "Pricing" && <Pricing />}
-            {openComponent === "Amenities" && <Amenities/>}
-            {openComponent === "Utilities" && <AddUtilities />}
-            {openComponent === "Discount" && <Discount />}
-            {openComponent === "Remove" && <RemoveComponent />}
-          </Dialog>
         </Card>
       ))}
     </Box>
