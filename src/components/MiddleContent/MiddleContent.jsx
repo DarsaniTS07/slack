@@ -10,6 +10,11 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { RiDeleteBinLine } from "react-icons/ri";
 import Pricing from "../Pricing/Pricing";
 import Amentities from "../Amentities/Amentities";
+import Utilitiess from "../Utilitiess/Utilities";
+import Discount from "../Discount/Discount";
+import RemoveComponent from "../RemoveComponent/RemoveComponent";
+import Details from "../Details/Details";
+
 
 
 const MiddleContent = () => {
@@ -96,7 +101,8 @@ const MiddleContent = () => {
         >
           <Box sx={{position:"relative"}}>
           <CardMedia component="img" alt="Home" height="115"
-          image={place} sx={{borderRadius:"5px", position:"relative"}} />
+          image={place} sx={{borderRadius:"5px", position:"relative"}}
+          onClick={() => handleOpenComponent("Details")} />
           <IconButton sx={{position:"absolute", top:3, right:3,cursor:"pointer"}}>
           <RiDeleteBinLine style={{color:"#FF4B4B",fontSize:"17px",
             border:"1px solid #FFFFFF", borderRadius:"50%", padding:"4px", backgroundColor:"#FFFFFF"
@@ -211,6 +217,11 @@ const MiddleContent = () => {
       </Popper>
       {openComponent === "Pricing" && (<Pricing  open={openComponent === "Pricing"} onClose={handleCloseComponent}/>)}
       {openComponent === "Amenities" && (<Amentities open={openComponent === "Amenities"} onClose={handleCloseComponent}/>)}
+      {openComponent === "Utilities" && (<Utilitiess open={openComponent === "Utilities"} onClose={handleCloseComponent}/>)}
+      {openComponent === "Discount" && (<Discount open={openComponent === "Discount"} onClose={handleCloseComponent}/>)}
+      {openComponent === "Remove" && (<RemoveComponent open={openComponent === "Remove"} onClose={handleCloseComponent}/>)}
+      {openComponent === "Details" && (<Details open={openComponent === "Details"} onClose={handleCloseComponent}/>)}
+
 
     </Box>
   </CardActions>

@@ -1,0 +1,46 @@
+{
+    "pricingDetails" : [
+        {
+            "id":1,
+            "billName": "Bill Name Here",
+            "amount": 1000,
+            "discount": "Discount",
+            "discountamt": "10%"
+          },
+          {
+            "id":2,
+            "billName": "Bill Name Here",
+            "amount": 2000,
+            "discount": "Discount",
+            "discountamt": "10%"
+          },
+          {
+            "id":3,
+            "billName": "Bill Name Here",
+            "amount": 500,
+            "discount": "Discount",
+            "discountamt": "10%"
+          },
+          {
+            "id":3,
+            "billName": "Bill Name Here",
+            "amount": 1000,
+            "discount": "Discount",
+            "discountamt": "10%"
+          },
+          {
+            "id":4,
+            "billName": "Utility Name Here",
+            "amount": 500,
+            "discount": "Discount",
+            "discountamt": "10%"
+          },
+          {
+            "id":5,
+            "billName": "Utility Name Here",
+            "amount": 1000,
+            "discount": "Discount",
+            "discountamt": "10%"
+          }
+    ]
+}

@@ -1,16 +1,20 @@
 import styled from '@emotion/styled';
 import { CloseRounded, ExpandMore, InfoOutlined } from '@mui/icons-material'
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, IconButton, LinearProgress, linearProgressClasses, MenuItem, Select, Typography } from '@mui/material'
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, FormControl, IconButton, InputAdornment, LinearProgress, linearProgressClasses, MenuItem, OutlinedInput, Select, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
 const PricingTable = ({open, onClose, title, bgColor,textColor}) => {
 
   const [selectedRevenueType, setSelectedRevenueType] = useState("Lease");
-  const [dropDown, setDropDown] = useState("");
+  const [pricingDropDown, setPricingDropDown] = useState("");
+  const [taxDropDown,setTaxDropDown] = useState("");
   const [pricing,setPricing] = useState("Amount")
 
-const handleChange = (event) => {
-  setDropDown(event.target.value);
+const handlePricingChange = (event) => {
+  setPricingDropDown(event.target.value);
+}
+const handleTaxChange = (event) => {
+  setTaxDropDown(event.target.value);
 }
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
@@ -86,8 +90,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
         <Box sx={{marginLeft:1,marginTop:1}}>
           <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Pricing Component</Typography>
           <Select
-          value={dropDown}
-          onChange={handleChange}
+          value={pricingDropDown}
+          onChange={handlePricingChange}
           IconComponent={ExpandMore}
           displayEmpty
           sx={{ height: "38px", fontSize: "14px",paddingRight: "15px" , backgroundColor:"#FFFFFF",marginTop:1 ,fontWeight:"600"}}
@@ -106,8 +110,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
         <Box >
           <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Tax Group for Pricing Component</Typography>
           <Select
-          value={dropDown}
-          onChange={handleChange}
+          value={taxDropDown}
+          onChange={handleTaxChange}
           IconComponent={ExpandMore}
           displayEmpty
           sx={{ height: "38px", fontSize: "14px",paddingRight: "7.5rem" , backgroundColor:"#FFFFFF",marginTop:1 ,fontWeight:"700"}}
@@ -159,8 +163,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
           <Box marginTop={1.5}>
           <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Pricing Component</Typography>
           <Select
-          value={dropDown}
-          onChange={handleChange}
+          value={taxDropDown}
+          onChange={handlePricingChange}
           IconComponent={ExpandMore}
           displayEmpty
           sx={{ height: "38px", fontSize: "14px",paddingRight: "1rem" , backgroundColor:"#FFFFFF",marginTop:1 ,fontWeight:"700"}}
@@ -173,8 +177,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
         <Box marginTop={1.5}>
           <Typography sx={{color:"#98A0AC", fontSize:"14px",marginLeft:1.5}}>Tax Group for Pricing Component</Typography>
           <Select
-          value={dropDown}
-          onChange={handleChange}
+          value={taxDropDown}
+          onChange={handlePricingChange}
           IconComponent={ExpandMore}
           displayEmpty
           sx={{ height: "38px", fontSize: "14px",paddingRight: "6.7rem" , backgroundColor:"#FFFFFF",marginTop:1 ,fontWeight:"700",marginLeft:2}}
@@ -195,9 +199,23 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
         {title === "Primary" && (
           <Box sx={{marginTop:1.7}} > 
             <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>UOM Value</Typography>
-            <Box border="1px solid #E4E8EE"  sx={{height: "34px", borderRadius:"5px",width:"25rem",display:"flex" , alignItems:"center",marginTop:"5px"}}>
-              <Typography sx={{marginLeft:"auto",color:"#98A0AC", marginRight:"10px"}}>SAR / Total</Typography>
-            </Box>
+          <TextField variant='outlined'
+          type='number'
+          slotProps ={{
+            input:{
+            endAdornment:<InputAdornment position='end' sx={{marginRight:"17px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"600",color:"#98A0AC"}}>SAR / Total</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'25.4rem',
+              marginTop:'10px',
+              "& .MuiInputBase-input":{
+                fontWeight:"700",
+              },
+            }
+          }}
+        }></TextField>
           </Box>
 )}
 {(title === "Secondary" || title === "One time Charges" || title === "Parking Slot") &&
@@ -337,19 +355,64 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
       <Box marginTop={2.1}>
       <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Maximum</Typography>
       <BorderLinearProgress variant="determinate" value={100} color='red' sx={{width:"7rem", height:"1px"}} />
-      <Box border="1px solid #E4E8EE" width="7rem" sx={{padding:"7px",fontFamily:"Nunito Sans", fontSize:"14px", fontWeight:700,marginTop:1, borderRadius:"5px"}}>$190</Box>
+      <TextField variant='outlined'
+          type='number'
+          placeholder='190'
+          slotProps ={{
+            input:{
+            startAdornment:<InputAdornment position='start' sx={{marginLeft:"11px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"700",color:"#1C1C1C"}}>$</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'8rem',
+              marginTop:'10px',
+              fontWeight:"700",              
+            }
+          }}
+        }></TextField>
       <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Sq.Yard/Monthly</Typography>
       </Box>
       <Box marginTop={2.1}>
       <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Recommended</Typography>
       <BorderLinearProgress variant="determinate" value={70} color='green' sx={{width:"7rem", height:"1px"}} />
-      <Box border="1px solid #E4E8EE" width="7rem" sx={{padding:"7px",fontFamily:"Nunito Sans", fontSize:"14px", fontWeight:700,marginTop:1, borderRadius:"5px"}}>$120</Box>
+      <TextField variant='outlined'
+          type='number'
+          placeholder='190'
+          slotProps ={{
+            input:{
+            startAdornment:<InputAdornment position='start' sx={{marginLeft:"11px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"700",color:"#1C1C1C"}}>$</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'8rem',
+              marginTop:'10px',
+              fontWeight:"700",              
+            }
+          }}
+        }></TextField>
       <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Sq.Yard/Monthly</Typography>
       </Box>
       <Box marginTop={2.1}>
-      <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Manimum</Typography>
+      <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Minimum</Typography>
       <BorderLinearProgress variant="determinate" value={30} color='orange' sx={{width:"7rem", height:"1px"}} />
-      <Box border="1px solid #E4E8EE" width="7rem" sx={{padding:"7px",fontFamily:"Nunito Sans", fontSize:"14px", fontWeight:700,marginTop:1, borderRadius:"5px"}}>$190</Box>
+      <TextField variant='outlined'
+          type='number'
+          placeholder='190'
+          slotProps ={{
+            input:{
+            startAdornment:<InputAdornment position='start' sx={{marginLeft:"11px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"700",color:"#1C1C1C"}}>$</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'8rem',
+              marginTop:'10px',
+              fontWeight:"700",              
+            }
+          }}
+        }></TextField>
       <Typography sx={{color:"#98A0AC", fontSize:"13px"}}>Sq.Yard/Monthly</Typography>
       </Box>
     </Box>
@@ -357,32 +420,88 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
   {(title === "Secondary" || title === "One time Charges" || title === "Parking Slot" )&& (
     <Box sx={{marginTop:2}} > 
     <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>UOM Value</Typography>
-    <Box border="1px solid #E4E8EE"  sx={{height: "34px", borderRadius:"5px",width:"26rem",display:"flex" , alignItems:"center",marginTop:"5px"}}>
-      <Typography sx={{marginLeft:"auto",color:"#98A0AC", marginRight:"10px"}}>$ / Total</Typography>
-    </Box>
+    <TextField variant='outlined'
+          type='number'
+          slotProps ={{
+            input:{
+            endAdornment:<InputAdornment position='end' sx={{marginRight:"17px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"600",color:"#98A0AC"}}>$ / Total</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'25.4rem',
+              marginTop:'10px',
+              "& .MuiInputBase-input":{
+                fontWeight:"700",
+              },
+            }
+          }}
+        }></TextField>
   </Box>
   )}
   {title === "Refundables" && (
     <Box sx={{marginTop:2.5}} > 
     <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Fixed Amount Value</Typography>
-    <Box border="1px solid #E4E8EE"  sx={{height: "34px", borderRadius:"5px",width:"25rem",display:"flex" , alignItems:"center",marginTop:"5px"}}>
-      <Typography sx={{marginLeft:"auto",color:"#98A0AC", marginRight:"10px"}}>$ / Total</Typography>
-    </Box>
+    <TextField variant='outlined'
+          type='number'
+          slotProps ={{
+            input:{
+            endAdornment:<InputAdornment position='end' sx={{marginRight:"17px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"600",color:"#98A0AC"}}>$ / Total</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'25.4rem',
+              marginTop:'10px',
+              "& .MuiInputBase-input":{
+                fontWeight:"700",
+              },
+            }
+          }}
+        }></TextField>
   </Box>
   )}
   {title === "Inventory Item" && (
     <Box sx={{marginTop:2.4}}  display="flex" gap={3}> 
     <Box>
     <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Item unit Price</Typography>
-    <Box border="1px solid #E4E8EE"  sx={{height: "34px", borderRadius:"5px",width:"11.3rem",display:"flex" , alignItems:"center",marginTop:"5px"}}>
-      <Typography sx={{marginLeft:"auto",color:"#98A0AC", marginRight:"10px"}}>$</Typography>
-    </Box>
+    <TextField variant='outlined'
+          type='number'
+          slotProps ={{
+            input:{
+            endAdornment:<InputAdornment position='end' sx={{marginRight:"17px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"600",color:"#98A0AC"}}>$</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'11.3rem',
+              marginTop:'10px',
+              "& .MuiInputBase-input":{
+                fontWeight:"700",
+              },
+            }
+          }}
+        }></TextField>
     </Box>
     <Box>
     <Typography sx={{color:"#98A0AC", fontSize:"14px"}}>Quantity</Typography>
-    <Box border="1px solid #E4E8EE"  sx={{height: "34px", borderRadius:"5px",width:"11.3rem",display:"flex" , alignItems:"center",marginTop:"5px"}}>
-      <Typography sx={{marginLeft:"auto",color:"#98A0AC", marginRight:"10px"}}>Qty</Typography>
-    </Box>
+    <TextField variant='outlined'
+          type='number'
+          slotProps ={{
+            input:{
+            endAdornment:<InputAdornment position='end' sx={{marginRight:"17px",fontWeight:"700",
+            }}><Typography sx={{fontWeight:"600",color:"#98A0AC"}}>Qty</Typography></InputAdornment>,
+            style:{
+              padding:0,
+              height:'2rem',
+              width:'11.3rem',
+              marginTop:'10px',
+              "& .MuiInputBase-input":{
+                fontWeight:"700",
+              },
+            }
+          }}
+        }></TextField>
     </Box>
 
   </Box>
@@ -390,7 +509,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme,color }) => ({
 
 {/* Button Part */}
 <Box marginTop={3.5} >
-  <Button variant='outlined'sx={{textTransform:"none"}}> Back</Button>
+  <Button variant='outlined' onClick={onClose} sx={{textTransform:"none"}}> Back</Button>
   <Button variant='contained'sx={{textTransform:"none", marginLeft:19}}> Create Pricing Component</Button>
 </Box>
 </Box>

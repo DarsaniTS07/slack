@@ -1,0 +1,28 @@
+{
+   "quotation" : [
+    {
+        "id":1,
+        "topic":"LEASE START DATE",
+        "date" :"30 Jan 22",
+        "state":""
+    },
+    {
+        "id":2,
+        "topic":"LEASE END DATE",
+        "date" :"30 Jan 23",
+        "state":""  
+    },
+    {
+        "id":3,
+        "topic":"RENT START DATE",
+        "date" :"30 Jan 23",
+        "state":""
+    },
+    {
+        "id":4,
+        "topic":"GRACE PERIOD",
+        "date" :"90 Days",
+        "state":"(Beginning)"
+    }
+   ] 
+}

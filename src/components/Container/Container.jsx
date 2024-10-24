@@ -1,8 +1,7 @@
 import { Box, Button, Grid2, Typography } from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import React from "react";
-import Lead_Details from "../Lead_Details/Lead_Details";
-import Unit_Details from "../Unit_Details/Unit_Details";
+import LeadDetails from "../LeadDetails/LeadDetails";
+import UnitDetails from "../UnitDetails/UnitDetails";
 import Quotation from "../Quotation/Quotation";
 import CustomSeparator from "../Header/Breadcrumbs";
 
@@ -21,10 +20,10 @@ const Container = () => {
       </Box>
       <Grid2 container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid2 size={3.7}>
-          <Lead_Details/>
+          <LeadDetails/>
         </Grid2>
         <Grid2 size={4.6}>
-          <Unit_Details/>
+          <UnitDetails/>
         </Grid2>
         <Grid2 size={3.7}>
         <Quotation/>
